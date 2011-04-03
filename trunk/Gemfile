@@ -29,3 +29,16 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem 'devise'
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'webrat'
+  gem 'rcov'
+end
+

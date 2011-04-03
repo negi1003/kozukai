@@ -1,0 +1,12 @@
+.DS_Store
+*.csv
+log/*.log
+tmp
+tmp/**/*
+sql
+*.sql
+*~
+coverage
+**/TAGS
+db/schema.rb
+config/database.yml
