@@ -22,7 +22,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: kozukai_test
+  database: kozukai_test1
   pool: 5
   username: root
   password: negi1432
