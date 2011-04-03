@@ -1,4 +1,12 @@
 Kozukai::Application.routes.draw do
+  devise_for :users, :path => "info", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
+
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy", :as => "logout"
+  end
+
+  get 'home', :to => 'home#index', :as => :user_root
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

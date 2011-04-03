@@ -1,7 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
-en:
+ja:
   hello: "Hello world"
 
   devise:
@@ -13,3 +10,7 @@ en:
           user_subject: 'Hello User! Please confirm your email'
         reset_password_instructions:
           subject: 'Reset instructions' 
+
+        sessions:
+          new:
+            email: "e--mail"
