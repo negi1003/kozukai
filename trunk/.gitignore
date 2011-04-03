@@ -5,8 +5,8 @@ tmp
 tmp/**/*
 sql
 *.sql
-*.swp
-*.lock
+**/*.swp
+**/*.lock
 coverage
 **/TAGS
 db/schema.rb
