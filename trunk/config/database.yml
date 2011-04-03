@@ -12,8 +12,8 @@ development:
   database: kozukai_development
   pool: 5
   username: root
-  password: negi1432
-  socket: /var/run/mysqld/mysqld.sock
+  password: senegald
+  socket: /opt/local/var/run/mysql5/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,8 +25,8 @@ test:
   database: kozukai_test1
   pool: 5
   username: root
-  password: negi1432
-  socket: /var/run/mysqld/mysqld.sock
+  password: senegald
+  socket: /opt/local/var/run/mysql5/mysqld.sock
 
 production:
   adapter: mysql2
