@@ -31,6 +31,8 @@ gem 'mysql2'
 # end
 
 gem 'devise'
+gem 'factory_girl_rails'
+gem 'rails3-generators'
 
 group :test do
   gem 'rspec'
@@ -41,4 +43,3 @@ group :test do
   gem 'webrat'
   gem 'rcov'
 end
-
