@@ -1,0 +1,34 @@
+<%= form_for(@cost) do |f| %>
+  <% if @cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cost.errors.count, "error") %> prohibited this cost from being saved:</h2>
+
+      <ul>
+      <% @cost.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :year, :value => 2011 %>
+    <%= f.hidden_field :month, :value => 4 %>
+    <%= f.hidden_field :day, :value => 4 %>
+
+  <div class="field">
+    <%= f.label :item_id %><br />
+    <%= f.select :item_id,
+      Item.find(:all).collect{|i| [i.name, i.id]}, { :include_blank => "-未選択-" } %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

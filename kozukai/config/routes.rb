@@ -1,4 +1,8 @@
 Kozukai::Application.routes.draw do
+  resources :costs
+
+  resources :items
+
   get "home/index"
 
   devise_for :users,
