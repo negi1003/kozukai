@@ -6,7 +6,7 @@ Kozukai::Application.routes.draw do
   get "home/index"
 
   devise_for :users,
-             :path => "info",
+             :path => "",
              :path_names => { :sign_in => 'login', :sign_out => 'logout',
                               :password => 'secret', :confirmation => 'verification', 
                               :unlock => 'unblock', :registration => 'register',
