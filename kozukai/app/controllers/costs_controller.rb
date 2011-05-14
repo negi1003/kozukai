@@ -2,9 +2,10 @@ class CostsController < ApplicationController
   # GET /costs
   # GET /costs.xml
   def index
-    year = 2011
-    month = 4
-    date = Date.new(year, month , 1)
+    today = Date.today
+    @year = params[:year] ? params[:year].to_i : today.year.to_i
+    @month = params[:month] ? params[:month].to_i : today.month.to_i
+    @day = Date.new(@year, @month, 1)
 
     @costs = Cost.all
 
