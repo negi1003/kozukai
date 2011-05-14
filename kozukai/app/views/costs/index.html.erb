@@ -1,32 +1,7 @@
 <h1>Listing costs</h1>
 
 <p><%= 2011 %>/ <%= 4 %></p>
-<table>
-  <tr>
-    <th>Wday</th>
-    <th>Date</th>
-    <th>Item</th>
-    <th>Price</th>
-    <th>Subject</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @costs.each do |cost| %>
-  <% date = Date.new(cost.year, cost.month, cost.day) %>
-  <tr>
-    <td><%= wday(date) %></td>
-    <td><%= cost.item.name %></td>
-    <td><%= cost.price %></td>
-    <td><%= cost.subject %></td>
-    <td><%= link_to 'Show', cost %></td>
-    <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
-    <td><%= link_to 'Destroy', cost, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
 <br />
 
+<%=raw calendar(:year => 2005, :month => 6)%>
 <%= link_to 'New Cost', new_cost_path %>

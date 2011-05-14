@@ -1,0 +1,18 @@
+div.header {
+  border-top:5px solid #222;
+}
+div.main {
+
+}
+div.menu {
+  float:left;
+  width:15%; 
+}
+div.contents {
+  float:left;
+  width:85%; 
+}
+div.footer {
+  clear:both;
+  border-bottom:5px solid #222;
+}

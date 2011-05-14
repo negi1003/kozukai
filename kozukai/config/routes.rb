@@ -3,8 +3,6 @@ Kozukai::Application.routes.draw do
 
   resources :items
 
-  get "home/index"
-
   devise_for :users,
              :path => "",
              :path_names => { :sign_in => 'login', :sign_out => 'logout',
@@ -20,8 +18,8 @@ Kozukai::Application.routes.draw do
     get "logout", :to => "users/sessions#destroy", :as => "logout"
   end
 
-  root :to => "home#index"
-  get 'home', :to => 'home#index', :as => :user_root
+  root :to => "costs#index"
+  get 'cost', :to => 'costs#index', :as => :user_root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

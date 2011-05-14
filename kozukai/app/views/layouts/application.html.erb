@@ -7,10 +7,26 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= link_to "home", "/home" %>
-<%= yield %>
+  <div style="text-align:right;">
+  <%= link_to "ログアウト", "/logout" %><br />
+  </div>
+  <div class="header">
+  </div>
+  <div class="main">
+    <div class="menu">
+      <%= link_to "月の表示", "/costs" %><br />
+      <%= link_to "項目毎の表示", "#" %><br />
+      <%= link_to "曜日毎の表示", "#" %><br />
+    </div>
+    <div class="contents">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+  </div>
+  <div class="footer">
+  </div>
+
 
 </body>
 </html>

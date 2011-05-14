@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+include CalendarHelper
+
 module ApplicationHelper
   def wday(date)
     int = date.strftime("%w")
