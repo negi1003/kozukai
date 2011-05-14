@@ -5,12 +5,16 @@ div.main {
 
 }
 div.menu {
+  padding-top: 1em;
   float:left;
   width:15%; 
+  padding-bottom: 2em
 }
 div.contents {
   float:left;
   width:85%; 
+  padding-top: 1em;
+  padding-bottom: 2em
 }
 div.footer {
   clear:both;
