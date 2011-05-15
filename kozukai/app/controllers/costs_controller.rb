@@ -3,8 +3,13 @@ class CostsController < ApplicationController
   # GET /costs.xml
   def index
     today = Date.today
-    @year = params[:year] ? params[:year].to_i : today.year.to_i
-    @month = params[:month] ? params[:month].to_i : today.month.to_i
+    if today.day < Setting.find_by_user_id(current_user.id).cutoff_date
+      date = today << 1
+    else
+      date = today
+    end
+    @year = params[:year] ? params[:year].to_i : date.year.to_i
+    @month = params[:month] ? params[:month].to_i : date.month.to_i
     @day = Date.new(@year, @month, 1)
 
     @costs = Cost.all
