@@ -24,7 +24,7 @@
   color: white;
 }
 
-.otherMonth, .day, .specialDay {
+.otherMonth, .day, .specialDay, .sunDay, .saturDay {
   height:70px;
 }
 
@@ -35,13 +35,19 @@
   background-color: #eeeeee;
 }
 
-.day, .otherMonth, .specialDay {
+.otherMonth, .day, .specialDay, .sunDay, .saturDay {
   border-left: 1px solid #d5d5d5;
   border-bottom: 1px solid #d5d5d5;
   text-align:left;
   vertical-align:top;
 }
 
+.sunDay {
+  background-color: #FFF0F5;
+}
+.saturDay {
+  background-color: #F0F8FF;
+}
 .specialDay {
   background-color: #FFF0F5;
 }

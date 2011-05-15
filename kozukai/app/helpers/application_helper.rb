@@ -4,6 +4,13 @@ include CalendarHelper
 
 module ApplicationHelper
   def wday(date)
+    style = week_day_style(date)
+    wday = "#{date.day}(#{change_wday(date)})"
+    wday = label_tag("wday", wday, {:style => style})
+    
+  end
+
+  def week_day_style(date)
     int = date.strftime("%w")
     int = int.to_i
     case int
@@ -14,13 +21,14 @@ module ApplicationHelper
     else
       style = nil
     end
-    wday = "#{date.day}(#{change_wday(int)})"
-    wday = label_tag("wday", wday, {:style => style})
-    
+    return style
   end
 
-  def change_wday(wday)
-    case wday
+  def change_wday(date)
+    int = date.strftime("%w")
+    int = int.to_i
+
+    case int
     when 0
       return "日"
     when 1
