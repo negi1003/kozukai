@@ -1,4 +1,6 @@
 Kozukai::Application.routes.draw do
+  get "config/index"
+
   resources :settings
 
   match '/costs(/:year(/:month))' => 'costs#index', :as => :costs, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
