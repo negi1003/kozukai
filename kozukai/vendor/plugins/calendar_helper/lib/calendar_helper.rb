@@ -89,9 +89,15 @@ module CalendarHelper
     last = Date.civil(options[:year], options[:month], -1)
 =end
     cutoff_date = Setting.find_by_user_id(current_user.id).cutoff_date
-    first = Date.civil(options[:year], options[:month], cutoff_date)
-    next_month = first >> 1
-    last = Date.civil(next_month.year, next_month.month , cutoff_date - 1)
+    if cutoff_date == 1
+      first = Date.civil(options[:year], options[:month], 1)
+      last = Date.civil(options[:year], options[:month], -1)
+    else
+      first = Date.civil(options[:year], options[:month], cutoff_date)
+      next_month = first >> 1
+      last = Date.civil(next_month.year, next_month.month , cutoff_date - 1)
+    end
+
     
     first_weekday = first_day_of_week(options[:first_day_of_week])
     last_weekday = last_day_of_week(options[:first_day_of_week])
