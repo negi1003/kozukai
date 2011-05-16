@@ -32,7 +32,7 @@
   color: #bbbbbb;
 }
 .weekendDay {
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 .otherMonth, .day, .specialDay, .sunDay, .saturDay {
@@ -44,9 +44,11 @@
 
 .sunDay {
   background-color: #FFF0F5;
+  color: #ff0000;
 }
 .saturDay {
   background-color: #F0F8FF;
+  color: #0000ff;
 }
 .specialDay {
   background-color: #FFF0F5;
