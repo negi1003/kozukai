@@ -4,7 +4,18 @@
   <b>Name:</b>
   <%= @item.name %>
 </p>
-
+<p>
+  <div>
+    <div style="float:left;"><b>ColorCode:</b> &nbsp </div>
+    <div style="float:left;border:2px solid;width:1.2em;height:1.2em;background-color:#<%= @item.color_code %>;"></div>
+    <div style="float:left;"> &nbsp <%= @item.color_code%></div>
+    <div style="clear:both;"></div>
+  </div>
+</p>
+<p>
+  <b>DefaultPrice:</b>
+  <%= @item.default_price %>
+</p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
