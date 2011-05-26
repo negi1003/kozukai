@@ -12,14 +12,6 @@ class Cost < ActiveRecord::Base
   validates :subject,
             :length => {:maximum => 25}
 
-  validates :year,
+  validates :date,
             :presence => true
-
-
-  validates :month,
-            :presence => true
-
-  validates :day,
-            :presence => true
-
 end

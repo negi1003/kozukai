@@ -3,8 +3,9 @@ Kozukai::Application.routes.draw do
 
   resources :settings
 
-  match '/costs(/:year(/:month))' => 'costs#index', :as => :costs, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   resources :costs
+  match '/costs(/:year(/:month))' => 'costs#index', :as => :costs, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match '/costs' => 'costs#index', :as => :costs
 
 
   resources :items

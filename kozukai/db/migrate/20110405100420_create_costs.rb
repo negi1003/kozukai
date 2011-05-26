@@ -4,9 +4,8 @@ class CreateCosts < ActiveRecord::Migration
       t.integer :price, :null => false, :limit => 7
       t.integer :item_id, :null => false
       t.string :subject, :null => false, :limit => 25
-      t.integer :year, :null => false, :limit => 4
-      t.integer :month, :null => false, :limit => 2
-      t.integer :day, :null => false, :limit => 2
+      t.date :date, :null => false
+      t.integer :user_id, :null => false
 
       t.timestamps
     end

@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 module CostsHelper
   def term
-    cutoff_date = Setting.find_by_user_id(current_user.id).cutoff_date
-    if cutoff_date == 1
-      first = Date.civil(@year, @month, 1)
-      last = Date.civil(@year, @month, -1)
-    else
-      first = Date.civil(@year, @month, cutoff_date)
-      next_month = first >> 1
-      last = Date.civil(next_month.year, next_month.month, cutoff_date - 1)
-    end
-    html = "#{first.year}/#{first.month}/#{first.day}"
+    html = "#{@first.year}/#{@first.month}/#{@first.day}"
     html += "〜"
-    html += "#{last.year}/#{last.month}/#{last.day}"
+    html += "#{@last.year}/#{@last.month}/#{@last.day}"
     html
   end
 
   def cost_calendar(year, month)
     html = ""
     html += calendar(:year => year, :month => month) do |d|
-              [d.mday, {:class => calender_class(d)}]
+              cell_text = d.mday.to_s
+              @costs.each do |cost|
+                if d == cost.date
+                  cell_text << link_to("#{cost.item.name}:#{cost.price}",
+                  :controller => "costs", :action => "edit", :id => cost)
+                end
+              end
+              [cell_text, {:class => calender_class(d)}]
             end
 
     html
@@ -29,7 +27,6 @@ module CostsHelper
     date = d.to_date
     int = date.strftime("%w")
     int = int.to_i
-    p "#{date} #{int}"
     case int
     when 6
       class_name = "saturDay"

@@ -2,17 +2,8 @@ class CostsController < ApplicationController
   # GET /costs
   # GET /costs.xml
   def index
-    today = Date.today
-    if today.day < Setting.find_by_user_id(current_user.id).cutoff_date
-      date = today << 1
-    else
-      date = today
-    end
-    @year = params[:year] ? params[:year].to_i : date.year.to_i
-    @month = params[:month] ? params[:month].to_i : date.month.to_i
-    @day = Date.new(@year, @month, 1)
-
-    @costs = Cost.all
+    term
+    @costs = Cost.where('user_id = ? AND date BETWEEN ? AND ?', current_user.id, @first, @last)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -58,7 +49,7 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to(@cost, :notice => 'Cost was successfully created.') }
+        format.html { redirect_to({ :action => :index }, :notice => 'Cost was successfully created.') }
         format.xml  { render :xml => @cost, :status => :created, :location => @cost }
       else
         format.html { render :action => "new" }
@@ -92,6 +83,30 @@ class CostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(costs_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def term
+    today = Date.today
+    cutoff_date = Setting.find_by_user_id(current_user.id).cutoff_date
+
+    if today.day < cutoff_date
+      date = today << 1
+    else
+      date = today
+    end
+    @year = params[:year] ? params[:year].to_i : date.year.to_i
+    @month = params[:month] ? params[:month].to_i : date.month.to_i
+    @day = Date.new(@year, @month, 1)
+
+
+    if cutoff_date == 1
+      @first = Date.civil(@year, @month, 1)
+      @last = Date.civil(@year, @month, -1)
+    else
+      @first = Date.civil(@year, @month, cutoff_date)
+      next_month = @first >> 1
+      @last = Date.civil(next_month.year, next_month.month, cutoff_date - 1)
     end
   end
 end

@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-    <%= f.hidden_field :year, :value => 2011 %>
-    <%= f.hidden_field :month, :value => 4 %>
-    <%= f.hidden_field :day, :value => 4 %>
+    <%= f.hidden_field :date, :value => Date.today %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="field">
     <%= f.label :item_id %><br />
