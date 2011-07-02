@@ -13,7 +13,7 @@ module CostsCalenderUtil
               cell_text = d.mday.to_s
               cell_attrs = {:class => calender_class(d)}
               #cell_attrs[:onclick] = "location.href = './costs/new';" 
-              cell_attrs[:href] = "/costs/new" 
+              cell_attrs[:href] = "/costs/new?date=" + d.to_s
               cell_attrs[:rel] = "prettyPopin" 
               @costs.each do |cost|
                 if d == cost.date

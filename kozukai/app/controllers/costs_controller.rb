@@ -25,8 +25,8 @@ class CostsController < ApplicationController
   # GET /costs/new
   # GET /costs/new.xml
   def new
-    @cost = Cost.new
-
+    @cost = Cost.new(:date => params[:date],
+                     :user_id => current_user.id)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @cost }
@@ -36,23 +36,15 @@ class CostsController < ApplicationController
   # GET /costs/1/edit
   def edit
     @cost = Cost.find(params[:id])
-    p @cost
-    p @cost
-    p @cost
   end
 
   # POST /costs
   # POST /costs.xml
   def create
     @cost = Cost.new(params[:cost])
-    p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-    p params
-    p @cost
-    p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to({ :action => :index }, :notice => 'Cost was successfully created.') }
+        format.html { redirect_to(@cost, :notice => 'Cost was successfully updated.') }
         format.xml  { render :xml => @cost, :status => :created, :location => @cost }
       else
         format.html { render :action => "new" }

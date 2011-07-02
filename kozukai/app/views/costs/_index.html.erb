@@ -7,13 +7,13 @@
 <h2><%= term %></h2>
 <div>
   <div style="float:left;margin-left:20px;">
-    <%= link_to "前月", { :controller => 'costs',
+    <%= link_to "前月", { :controller => controller_name,
       :action => :index,
       :year => (@day << 1).year,
       :month => (@day << 1).month } %>
   </div>
   <div style="float:right;margin-right:20px;">
-    <%= link_to "翌月", { :controller => 'costs',
+    <%= link_to "翌月", { :controller => controller_name,
       :action => :index,
       :year => (@day >> 1).year,
       :month => (@day >> 1).month } %> 
@@ -23,8 +23,22 @@
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
-    $("a[rel^='prettyPopin']").prettyPopin({height:false, width: 550,followScroll:true});
-    $("td[rel^='prettyPopin']").prettyPopin({height:false, width: 550,followScroll:false});
+    $("a[rel^='prettyPopin']").prettyPopin({
+          height:false,
+          width: 550,
+          followScroll:true,
+          callback: function(){  
+            location.reload();
+          }
+    });
+    $("td[rel^='prettyPopin']").prettyPopin({
+          height:false,
+          width: 550,
+          followScroll:false,
+          callback: function(){  
+            location.reload();
+          }
+    });
   });
 </script>
 

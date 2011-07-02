@@ -1,5 +1,7 @@
-<p id="notice"><%= notice %></p>
-
+<p>
+  <b>Date:</b>
+  <%= @cost.date %>
+</p>
 <p>
   <b>Price:</b>
   <%= @cost.price %>
@@ -10,18 +12,4 @@
   <%= @cost.subject %>
 </p>
 
-<p>
-  <b>Date:</b>
-  <%= @cost.year %>
-  <%= @cost.month %>
-  <%= @cost.day %>
-</p>
 
-<p>
-  <b>Wday:</b>
-  <%= @cost.day %>
-</p>
-
-
-<%= link_to 'Edit', edit_cost_path(@cost) %> |
-<%= link_to 'Back', costs_path %>
