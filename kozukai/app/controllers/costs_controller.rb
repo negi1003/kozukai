@@ -36,6 +36,9 @@ class CostsController < ApplicationController
   # GET /costs/1/edit
   def edit
     @cost = Cost.find(params[:id])
+    p @cost
+    p @cost
+    p @cost
   end
 
   # POST /costs

@@ -1,4 +1,8 @@
 Kozukai::Application.routes.draw do
+  get "home/index"
+
+  resources :popup_costs
+
   get "config/index"
 
   resources :settings
