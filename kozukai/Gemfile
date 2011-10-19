@@ -34,6 +34,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 gem 'rails3-generators'
 #gem 'calendar_helper'
+gem 'jquery-rails'
 
 group :test do
   gem 'rspec'
