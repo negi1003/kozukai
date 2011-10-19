@@ -8,29 +8,27 @@ Kozukai::Application.routes.draw do
   resources :settings
 
   resources :costs
-  match '/costs(/:year(/:month))' => 'costs#index', :as => :costs, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match '/costs' => 'costs#index', :as => :costs
 
 
   resources :items
 
   devise_for :users,
+             :controllers => { :sessions => "users/sessions" },
              :path => "",
              :path_names => { :sign_in => 'login', :sign_out => 'logout',
                               :password => 'secret', :confirmation => 'verification', 
                               :unlock => 'unblock', :registration => 'register',
                               :sign_up => 'cmon_let_me_in' }
-
 #  devise_for :users, :controllers => { :sessions => "users/sessions" }
                               
 
   devise_scope :user do
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy", :as => "logout"
+    root :to => "users/sessions#new"
   end
 
-  root :to => "costs#index"
-  get 'cost', :to => 'costs#index', :as => :user_root
+  get 'home', :to => 'home#index', :as => :user_root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
