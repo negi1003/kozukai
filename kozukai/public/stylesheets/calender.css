@@ -26,6 +26,7 @@
 
 .otherMonth, .day, .specialDay, .sunDay, .saturDay {
   height:70px;
+  width:40px;
 }
 
 .otherMonth {
