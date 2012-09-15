@@ -1,6 +1,8 @@
 class Setting < ActiveRecord::Base
   belongs_to :user
 
+  attr_accessible :cutoff_date, :user_id
+
 
   validates :user_id,
             :presence => true,

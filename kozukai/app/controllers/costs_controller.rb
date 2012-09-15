@@ -76,7 +76,7 @@ class CostsController < ApplicationController
     @cost.destroy
 
     respond_to do |format|
-      format.html { redirect_to(costs_url) }
+      format.html { redirect_to(:controller => "home") }
       format.xml  { head :ok }
     end
   end

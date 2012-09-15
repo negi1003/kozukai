@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+  attr_accessible :name, :color_code, 
+                  :default_price, :order, :user_id
+
   validates :name,
             :presence => true,
             :uniqueness => {:scope => :user_id},
