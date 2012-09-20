@@ -1,5 +1,5 @@
 class CreateCosts < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :costs do |t|
       t.integer :price, :null => false, :limit => 7
       t.integer :item_id, :null => false
@@ -11,7 +11,4 @@ class CreateCosts < ActiveRecord::Migration
     end
   end
 
-  def self.down
-    drop_table :costs
-  end
 end

@@ -1,0 +1,21 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## fail-on-doc-failure.dpatch by  <lucas@lucas-nussbaum.net>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Be more pedantic than upstream regarding documentation generation
+## DP: failures.
+
+@DPATCH@
+Index: ruby-rmagick/post-setup.rb
+===================================================================
+--- ruby-rmagick.orig/post-setup.rb	2011-05-17 12:20:11.000000000 -0500
++++ ruby-rmagick/post-setup.rb	2011-05-17 12:54:46.000000000 -0500
+@@ -84,7 +84,7 @@
+     if $? != 0 then
+       puts("post-setup.rb: #{example} example returned error code #{$?}")
+       @errs += 1 unless ALLOW_EXAMPLE_ERRORS
+-      if @errs > 4
++      if @errs > 1
+          err(<<-END_EXFAIL
+             Too many examples failed. Search for "Help!" at
+             http://rmagick.rubyforge.org/install-faq.html.

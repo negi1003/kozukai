@@ -1,0 +1,127 @@
+Author: Gunnar Wolf <gwolf@debian.org>
+Forwarded: not-needed
+Description: Include the path relative to each of the programs being
+ run in the examples, to allow them to be called at build time
+Index: ruby-rmagick/examples/constitute.rb
+===================================================================
+--- ruby-rmagick.orig/examples/constitute.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/constitute.rb	2011-05-17 13:36:27.000000000 -0500
+@@ -1,7 +1,7 @@
+ #! /usr/local/bin/ruby -w
+ require 'RMagick'
+ 
+-f = Magick::Image.read("../doc/ex/images/Flower_Hat.jpg").first
++f = Magick::Image.read(File.join(File.dirname(__FILE__), "../doc/ex/images/Flower_Hat.jpg")).first
+ pixels = f.dispatch(0,0,f.columns, f.rows, "RGB")
+ image = Magick::Image.constitute(f.columns, f.rows, "RGB", pixels)
+ image.write("constitute.miff")
+Index: ruby-rmagick/examples/crop_with_gravity.rb
+===================================================================
+--- ruby-rmagick.orig/examples/crop_with_gravity.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/crop_with_gravity.rb	2011-05-17 13:36:21.000000000 -0500
+@@ -10,7 +10,7 @@
+ require 'RMagick'
+ include Magick
+ 
+-shorts = Image.read('../doc/ex/images/Shorts.jpg').first
++shorts = Image.read(File.join(File.dirname(__FILE__), '../doc/ex/images/Shorts.jpg')).first
+ 
+ regwidth = shorts.columns/2
+ regheight = shorts.rows/2
+Index: ruby-rmagick/examples/demo.rb
+===================================================================
+--- ruby-rmagick.orig/examples/demo.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/demo.rb	2011-05-17 13:36:14.000000000 -0500
+@@ -17,12 +17,12 @@
+ begin
+     puts "Read images..."
+ 
+-    model = ImageList.new("../doc/ex/images/model.miff")
++    model = ImageList.new(File.join(File.dirname(__FILE__), "../doc/ex/images/model.miff"))
+     model.border_color = "black"
+     model.background_color = "black"
+     model.cur_image[:Label] = "RMagick"
+ 
+-    smile = ImageList.new("../doc/ex/images/smile.miff")
++    smile = ImageList.new(File.join(File.dirname(__FILE__), "../doc/ex/images/smile.miff"))
+     smile.border_color = "black"
+     smile.cur_image[:Label] = "Smile"
+ 
+Index: ruby-rmagick/examples/find_similar_region.rb
+===================================================================
+--- ruby-rmagick.orig/examples/find_similar_region.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/find_similar_region.rb	2011-05-17 13:35:41.000000000 -0500
+@@ -6,7 +6,7 @@
+ 
+ #   Draw a red rectangle over the image that shows where the target matched.
+ 
+-img = Magick::Image.read('../doc/ex/images/Flower_Hat.jpg').first
++img = Magick::Image.read(File.join(File.dirname(__FILE__), '../doc/ex/images/Flower_Hat.jpg')).first
+ target = img.crop(21, 94, 118, 126)
+ 
+ begin
+Index: ruby-rmagick/examples/histogram.rb
+===================================================================
+--- ruby-rmagick.orig/examples/histogram.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/histogram.rb	2011-05-17 13:35:30.000000000 -0500
+@@ -288,7 +288,7 @@
+ # Get filename from command line.
+ if !ARGV[0] then
+     puts "No filename argument. Defaulting to Flower_Hat.jpg"
+-    filename = '../doc/ex/images/Flower_Hat.jpg'
++    filename = File.join(File.dirname(__FILE__), '../doc/ex/images/Flower_Hat.jpg')
+ else
+     filename = ARGV[0]
+ end
+Index: ruby-rmagick/examples/image_opacity.rb
+===================================================================
+--- ruby-rmagick.orig/examples/image_opacity.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/image_opacity.rb	2011-05-17 13:35:19.000000000 -0500
+@@ -11,7 +11,7 @@
+ 
+ END_INFO
+ 
+-balloons = Image.read('../doc/ex/images/Hot_Air_Balloons_H.jpg').first
++balloons = Image.read(File.join(File.dirname(__FILE__), '../doc/ex/images/Hot_Air_Balloons_H.jpg')).first
+ legend = Image.new(160, 50) { self.background_color = '#ffffffc0' }
+ 
+ gc = Draw.new
+Index: ruby-rmagick/examples/import_export.rb
+===================================================================
+--- ruby-rmagick.orig/examples/import_export.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/import_export.rb	2011-05-17 13:35:07.000000000 -0500
+@@ -13,7 +13,7 @@
+ 
+ END_INFO
+ 
+-img = Image.read('../doc/ex/images/Gold_Statue.jpg').first
++img = Image.read(File.join(File.dirname(__FILE__), '../doc/ex/images/Gold_Statue.jpg')).first
+ copy = Image.new(img.columns, img.rows);
+ 
+ begin
+Index: ruby-rmagick/examples/thumbnail.rb
+===================================================================
+--- ruby-rmagick.orig/examples/thumbnail.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/thumbnail.rb	2011-05-17 13:34:45.000000000 -0500
+@@ -30,7 +30,7 @@
+         size = DEFAULT_SIZE
+     else
+         size = DEFAULT_SIZE
+-        image = "../doc/ex/images/Flower_Hat.jpg"
++        image = File.join(File.dirname(__FILE__), "../doc/ex/images/Flower_Hat.jpg")
+ end
+ 
+ geom = "#{size}x#{size}"
+Index: ruby-rmagick/examples/vignette.rb
+===================================================================
+--- ruby-rmagick.orig/examples/vignette.rb	2011-05-17 13:33:51.000000000 -0500
++++ ruby-rmagick/examples/vignette.rb	2011-05-17 13:34:37.000000000 -0500
+@@ -13,7 +13,7 @@
+ 
+ END_INFO
+ 
+-ballerina = Image.read("../doc/ex/images/Ballerina3.jpg")[0]
++ballerina = Image.read(File.join(File.dirname(__FILE__), "../doc/ex/images/Ballerina3.jpg"))[0]
+ 
+ # Note: this technique won't work with every image. To make a pretty
+ # vignette you need an image with a uniform, fairly dark background.

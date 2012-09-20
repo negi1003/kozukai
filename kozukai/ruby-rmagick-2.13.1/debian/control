@@ -1,0 +1,64 @@
+Source: ruby-rmagick
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Antonio Terceiro <terceiro@softwarelivre.org>, Gunnar Wolf <gwolf@debian.org>, Vincent Fourmond <fourmond@debian.org>
+DM-Upload-Allowed: yes
+Build-Depends: debhelper (>= 7.0.50~), gem2deb (>= 0.2.4~), 
+               libmagickcore-dev (>= 7:6.6.0.4-2~), libwmf-bin, 
+               ghostscript, gsfonts, libmagickwand-dev
+Standards-Version: 3.9.2
+Vcs-Git: git://git.debian.org/pkg-ruby-extras/ruby-rmagick.git
+Vcs-Browser: http://git.debian.org/?p=pkg-ruby-extras/ruby-rmagick.git;a=summary
+Homepage: http://rubyforge.org/projects/rmagick
+XS-Ruby-Versions: all
+
+Package: ruby-rmagick
+Architecture: any
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ruby1.8 | ruby-interpreter
+Replaces: librmagick-ruby (<< 2.13.1-3~), librmagick-ruby1.8 (<< 2.13.1-3~)
+Breaks: librmagick-ruby (<< 2.13.1-3~), librmagick-ruby1.8 (<< 2.13.1-3~)
+Provides: librmagick-ruby, librmagick-ruby1.8, librmagick-ruby-doc
+Description: ImageMagick API for Ruby (documentation)
+ RMagick is an interface between the Ruby programming language and the
+ ImageMagick image processing library.
+
+
+Package: ruby-rmagick-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Replaces: librmagick-ruby-doc (<< 2.13.1-3~)
+Breaks: librmagick-ruby-doc (<< 2.13.1-3~)
+Description: ImageMagick API for Ruby (documentation)
+ RMagick is an interface between the Ruby programming language and the
+ ImageMagick image processing library.
+ .
+ This package contains the documentation and some example scripts.
+
+
+# Transitional packages
+Package: librmagick-ruby-doc
+Section: oldlibs
+Architecture: all
+Depends: ${misc:Depends}, ruby-rmagick-doc
+Description: Transitional package for ruby-imagemagick
+ This is a transitional package to ease upgrades to the ruby-imagemagick
+ package. It can safely be removed.
+
+Package: librmagick-ruby
+Section: oldlibs
+Architecture: all
+Depends: ${misc:Depends}, ruby-rmagick
+Description: Transitional package for ruby-imagemagick
+ This is a transitional package to ease upgrades to the ruby-imagemagick
+ package. It can safely be removed.
+
+Package: librmagick-ruby1.8
+Section: oldlibs
+Architecture: all
+Depends: ${misc:Depends}, ruby-rmagick
+Description: Transitional package for ruby-imagemagick
+ This is a transitional package to ease upgrades to the ruby-imagemagick
+ package. It can safely be removed.

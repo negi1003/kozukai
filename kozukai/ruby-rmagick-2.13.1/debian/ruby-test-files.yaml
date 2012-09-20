@@ -1,0 +1,20 @@
+# They are not formally test suites, but just examples... However,
+# they will provide a first approach at breakage if we b0rk something
+# ;-)
+#
+# vignette.rb is left out, as it requires an X connection.
+--- 
+- examples/constitute.rb
+- examples/crop_with_gravity.rb
+- examples/demo.rb
+- examples/describe.rb
+- examples/find_similar_region.rb
+- examples/histogram.rb
+- examples/identify.rb
+- examples/image_opacity.rb
+- examples/import_export.rb
+- examples/pattern_fill.rb
+- examples/rotating_text.rb
+- examples/spinner.rb
+- examples/thumbnail.rb
+
