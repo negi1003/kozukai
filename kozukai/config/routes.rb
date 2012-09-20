@@ -9,7 +9,6 @@ Kozukai::Application.routes.draw do
 
   resources :costs
 
-
   resources :items
 
   devise_for :users,

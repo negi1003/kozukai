@@ -1,4 +1,16 @@
+# -*- coding: utf-8 -*-
 class CostsController < ApplicationController
+  def gruff_pie
+    g = Gruff::Pie.new 500
+    g.title = "グラフ"
+    costs = Cost.find :all
+    costs.each do |cost|
+      g.data(cost.item.name, [cost.price])
+    end
+    #send_data(g.to_blob, :type => 'image/png')
+    send_data(g.to_blob, :type => 'image/png', :disposition=>"inline")
+  end
+
   # GET /costs
   # GET /costs.xml
   def index
@@ -20,6 +32,7 @@ class CostsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @cost }
     end
+
   end
 
   # GET /costs/new

@@ -21,6 +21,7 @@
   <% script_files.each do |name|%>
     <%= javascript_include_tag name %>
   <% end %>
+  <%= javascript_include_tag "jquery.prettyPopin" %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -32,7 +33,14 @@
   </div>
   <div class="main">
     <div class="menu">
-      <%= link_to "月の表示", "/home" %><br />
+      kkk
+      <img src="<%= url_for :controller=>'costs', :action=>'gruff_pie' %>">
+      kkk
+      <%= link_to "月の表示",
+        #costs_gruff_pie_url
+        {:controller => "costs", :action => "gruff_pie" },
+        { :rel => "prettyPopin", :method => :get } 
+        %><br />
       <%= link_to "円グラフの項目表示", "#" %><br />
       <%= link_to "曜日毎の表示", "#" %><br />
       <%= link_to "設定", "/config/index" %><br />
@@ -45,7 +53,5 @@
   </div>
   <div class="footer">
   </div>
-
-
 </body>
 </html>
