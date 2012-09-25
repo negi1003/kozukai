@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 class CostsController < ApplicationController
   def gruff_pie
+    @time = Time.now.strftime("%Y%m%d%H%M%S")
     g = Gruff::Pie.new 500
-    g.title = "グラフ"
+=begin
+    theme = {
+      :colors => ["#000", "#111" , "#222", "#333", "#444", "#555"],
+      :maker_color => "#999",
+      :font_color => "#000",
+      :background_colors => %w("#FFF" "#CCC")
+    }
+    g.theme = theme
+=end
+    #0を頂点にする。デフォルトだと右90度から始まる。
+    g.zero_degree = -90
+    #値をソートしない(デフォルトはtrue）
+    g.sort = false
+
+    g.title = "円グラフ"
     costs = Cost.find :all
     costs.each do |cost|
       g.data(cost.item.name, [cost.price])
     end
-    #send_data(g.to_blob, :type => 'image/png')
-    send_data(g.to_blob, :type => 'image/png', :disposition=>"inline")
+    g.font = Rails.root.to_s + "/public/font/HGRMB.TTC"
+    g.write(Rails.root.to_s + "/public/gruff/#{@time}.jpg")
   end
 
   # GET /costs

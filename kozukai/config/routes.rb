@@ -7,6 +7,7 @@ Kozukai::Application.routes.draw do
 
   resources :settings
 
+  match "costs/gruff_pie", :via=>:get
   resources :costs
 
   resources :items
