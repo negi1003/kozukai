@@ -15,5 +15,3 @@ coverage
 **/TAGS
 db/schema.rb
 config/database.yml
-public/gruff/*.jpg
-public/gruff/**/*.jpg

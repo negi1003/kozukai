@@ -13,8 +13,14 @@ Kozukai::Application.routes.draw do
   resources :items
 
   devise_for :users,
-             :controllers => { :sessions => "users/sessions" },
              :path => "",
+             :controllers => {:registrations => "users/registrations",
+                              :passwords => "users/passwords",
+                              :omniauth_callbacks => "users/omniauth_callbacks",
+                              :unlocks_controller => "users/unlocks_controller",
+                              :confirmations => "users/confirmations",
+                              :sessions => "users/sessions" },
+
              :path_names => { :sign_in => 'login', :sign_out => 'logout',
                               :password => 'secret', :confirmation => 'verification', 
                               :unlock => 'unblock', :registration => 'register',
