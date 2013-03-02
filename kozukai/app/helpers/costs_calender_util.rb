@@ -18,7 +18,7 @@ module CostsCalenderUtil
               @costs.each do |cost|
                 if d == cost.date
                   cell_text << "<div>"
-                  cell_text << link_to("#{cost.item.name}:#{cost.price}",
+                  cell_text << link_to("#{cost.item.try(:name)}:#{cost.price}",
                  { :controller => "costs",
                    :action => "edit",
                    :id => cost},
