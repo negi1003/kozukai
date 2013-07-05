@@ -38,6 +38,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'cucumber'
+  gem 'capybara' ,'1.1.2'
   gem 'cucumber-rails'
   gem 'webrat'
   gem 'metric_fu'
