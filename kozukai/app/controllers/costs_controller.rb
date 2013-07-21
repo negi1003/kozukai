@@ -10,7 +10,9 @@ class CostsController < ApplicationController
     g.sort = false
 
     g.title = "円グラフ"
-    costs = Cost.find :all
+
+    term
+    costs = Cost.where('user_id = ? AND date BETWEEN ? AND ?', current_user.id, @first, @last)
     costs = costs.group_by{|c| c.item }
     costs.each do |item,costs|
       color = "#"+item.color_code
@@ -21,11 +23,8 @@ class CostsController < ApplicationController
       g.data(costs[0].item.try(:name), [price],color)
     end
     g.theme = {
-      :colors => ['#000000', '#ffffff', '#1e90ff', '#efba00', '#0aaafd'],
-      :marker_color => '#aaa',
       :background_colors => ['#eaeaea', '#fff']
     }
-    #p g
     g.font = Rails.root.to_s + "/public/font/HGRMB.TTC"
     g.write(Rails.root.to_s + "/public/gruff/#{@time}.jpg")
   end

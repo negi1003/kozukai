@@ -3,25 +3,18 @@
 <head>
   <title>Kozukai</title>
   <%= stylesheet_link_tag :all %>
-  <% css_files = %w(application calender colorpicker common prettyPopin scaffold) %>
+  <% css_files = %w(application) %>
+  <%# css_files = %w(application calender colorpicker common prettyPopin scaffold) %>
   <% css_files.each do |name|%>
     <%= stylesheet_link_tag  name, :media => "all" %>
   <% end %>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery" %>
-  <% script_files = [
-                      "application",
-              #        "no_conflict",
-              #        "prototype",
-                      "jquery.min",
-                      "jquery.prettyPopin",
-                      "jquery_ujs.js",
-                      "colorpicker"
-  ] -%>
+  <%#= javascript_include_tag :defaults %>
+  <%#= javascript_include_tag "jquery" %>
+  <% script_files = [ "application" ] -%>
   <% script_files.each do |name|%>
     <%= javascript_include_tag name %>
   <% end %>
-  <%= javascript_include_tag "jquery.prettyPopin" %>
+  <%#= javascript_include_tag "jquery.prettyPopin" %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -34,8 +27,7 @@
   <div class="main">
     <div class="menu">
       <%= link_to "月の表示",
-        #costs_gruff_pie_url
-        {:controller => "/costs", :action => "gruff_pie" },
+        "/costs/gruff_pie?month=#{@month}&year=#{@year}",
         { :rel => "prettyPopin", :method => :get } 
         %><br />
       <%= link_to "円グラフの項目表示", "#" %><br />
