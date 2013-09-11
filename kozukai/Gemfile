@@ -41,7 +41,7 @@ group :test do
   gem 'capybara' ,'1.1.2'
   gem 'cucumber-rails'
   gem 'webrat'
-  gem 'metric_fu', '2.1.4.pre5'
+  #gem 'metric_fu', '2.1.4.pre5'
   gem 'rcov', '0.9.11'
 end
 

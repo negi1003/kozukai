@@ -24,10 +24,21 @@ class User < ActiveRecord::Base
   end
 
   def create_items
-    names = ["食費", "交際費", "交通費", "生活費", "趣味・娯楽費", "嗜好品", "光熱費", "医療費", "保険", "ローン代"]
+    lists = [
+      { :name => "食費",         :color => "FF0000" }, 
+      { :name => "交際費",       :color => "FF9900" },
+      { :name => "交通費",       :color => "FFFF00" },
+      { :name => "生活費",       :color => "00FF00" },
+      { :name => "趣味・娯楽費", :color => "0000FF" },
+      { :name => "嗜好品",       :color => "330066" },
+      { :name => "光熱費",       :color => "FF00FF" },
+      { :name => "医療費",       :color => "FFB6C1" },
+      { :name => "保険",         :color => "00FFFF" },
+      { :name => "ローン代",     :color => "000000" }
+    ]
     #names = ["a","b","c"]
-    names.each do |name|
-      item = Item.new(:user_id => self.id, :name => name)
+    lists.each do |list|
+      item = Item.new(:user_id => self.id, :name => list[:name], :color_code => list[:color])
       item.save!
     end
   end
